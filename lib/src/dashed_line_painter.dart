@@ -1,5 +1,5 @@
-import 'dart:typed_data';
 import 'dart:math' show min;
+import 'dart:typed_data';
 
 import 'package:flutter/rendering.dart';
 
