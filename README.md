@@ -67,7 +67,7 @@ From here we can just copy the value of the `path`'s `d` attribute and use for t
 
 ## 🚨 Note about paths
 
-Due to how `Path`s work in Flutter and Skia, the `DashedPath` widget takes NOT as much space as the dashed line needs, but as much it needs to contain all the [control points][control-points]. Table below should help understand the problem.
+Due to how `Path`s work in Flutter and Skia, the `DashedLine` widget takes NOT as much space as the dashed line needs, but as much it needs to contain all the [control points][control-points]. Table below should help understand the problem.
 
 | Path commands                 |          Path          |          Result line          |
 |-------------------------------|:----------------------:|:-----------------------------:|
