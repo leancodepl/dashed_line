@@ -1,6 +1,12 @@
+<div align="center">
+
 # dashed_line
 
 [![pub.dev][pub-badge]][pub-link] [![build status][build-badge]][build-link]
+
+</div>
+
+![][underheader]
 
 Draw dashed lines with any shape and style you want. Just like that.
 
@@ -72,6 +78,7 @@ Due to how `Path`s work in Flutter and Skia, the `DashedPath` widget takes NOT a
 
 See [`LICENSE`][license].
 
+[underheader]: art/underheader.png
 [pub-badge]: https://img.shields.io/pub/v/dashed_line
 [pub-link]: https://pub.dev/packages/dashed_line
 [build-badge]: https://img.shields.io/github/workflow/status/leancodepl/dashed_line/Test
