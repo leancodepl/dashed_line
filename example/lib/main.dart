@@ -1,7 +1,7 @@
 import 'package:dashed_line/dashed_line.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MaterialApp(home: const HomeScreen()));
+void main() => runApp(const MaterialApp(home: HomeScreen()));
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,11 +12,11 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('dashed_line example'),
+        title: const Text('dashed_line example'),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(Icons.celebration),
+        child: const Icon(Icons.celebration),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
