@@ -9,7 +9,7 @@ on:
 
 jobs:
   test:
-    name: Analyze and test
+    name: Flutter ${{ matrix.flutter }}
 
     strategy:
       fail-fast: false
