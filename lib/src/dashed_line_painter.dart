@@ -49,7 +49,7 @@ class DashedLinePainter extends CustomPainter {
           dist += dashLength + dashSpace) {
         final dashPath = pathMetric
             .extractPath(dist, dist + dashLength)
-            .transform(scaleMatrix4(scale))
+            .transform(_scaleMatrix4(scale))
             .shift(offset);
 
         canvas.drawPath(dashPath, paint);
@@ -57,7 +57,8 @@ class DashedLinePainter extends CustomPainter {
     }
   }
 
-  Float64List scaleMatrix4(double scale) {
+  /// https://en.wikipedia.org/wiki/Scaling_(geometry)#Using_homogeneous_coordinates
+  static Float64List _scaleMatrix4(double scale) {
     final matrix = <List<double>>[
       [scale, 0, 0, 0],
       [0, scale, 0, 0],

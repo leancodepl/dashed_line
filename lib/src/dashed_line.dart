@@ -3,7 +3,16 @@ import 'package:svg_path_parser/svg_path_parser.dart';
 
 import 'dashed_line_painter.dart';
 
+/// A dashed line following a path.
+///
+/// The line follows a specified path, either:
+/// 1. A [Path] if using a default constructor.
+/// 2. An SVG path definition when using the [DashedLine.svgPath] constructor.
+///
+/// The line `alignment`, `dashLength`, `dashSpace`, `strokeCap`,
+/// and `strokeWidth` are customizable.
 class DashedLine extends StatelessWidget {
+  /// Creates a dashed line following a `path`.
   const DashedLine({
     Key? key,
     required this.path,
@@ -11,10 +20,17 @@ class DashedLine extends StatelessWidget {
     this.alignment = Alignment.center,
     this.dashLength = 4,
     this.dashSpace = 8,
-    this.strokeCap = StrokeCap.butt,
-    this.strokeWidth = 1,
+    this.dashCap = StrokeCap.butt,
+    this.width = 1,
   }) : super(key: key);
 
+  /// Creates a dashed line following a path defined using SVG path commands.
+  ///
+  /// The `svgPath` is a path definition, i.e. a list of path commands
+  /// known from the SVG file format.
+  ///
+  /// See also:
+  /// - https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#path_commands
   DashedLine.svgPath(
     String svgPath, {
     Key? key,
@@ -22,18 +38,36 @@ class DashedLine extends StatelessWidget {
     this.alignment = Alignment.center,
     this.dashLength = 4,
     this.dashSpace = 8,
-    this.strokeCap = StrokeCap.butt,
-    this.strokeWidth = 1,
+    this.dashCap = StrokeCap.butt,
+    this.width = 1,
   })  : path = parseSvgPath(svgPath),
         super(key: key);
 
+  /// The path that the dashed line follows.
+  ///
+  /// Can consist of multiple path metrics.
   final Path path;
+
+  /// The dashed line color.
   final Color color;
+
+  /// The alignment of the dashed line relative to the parent.
   final Alignment alignment;
+
+  /// The length of a single dash, i.e. the drawn parts of the whole [path].
   final double dashLength;
+
+  /// The distance between each dash, i.e. the blank spaces on the whole [path].
   final double dashSpace;
-  final double strokeWidth;
-  final StrokeCap strokeCap;
+
+  /// The [StrokeCap] of each dash.
+  ///
+  /// This is the shape that appears on the beginning and end of each dash
+  /// on the dashed line.
+  final StrokeCap dashCap;
+
+  /// The width of the dashed line.
+  final double width;
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +78,8 @@ class DashedLine extends StatelessWidget {
         alignment: alignment,
         dashLength: dashLength,
         dashSpace: dashSpace,
-        strokeWidth: strokeWidth,
-        strokeCap: strokeCap,
+        strokeCap: dashCap,
+        strokeWidth: width,
       ),
       child: const SizedBox.expand(),
     );
