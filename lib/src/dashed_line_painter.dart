@@ -3,6 +3,8 @@ import 'dart:typed_data';
 
 import 'package:flutter/rendering.dart';
 
+import 'fitting_path_size.dart';
+
 class DashedLinePainter extends CustomPainter {
   DashedLinePainter({
     required this.path,
@@ -30,16 +32,21 @@ class DashedLinePainter extends CustomPainter {
       ..strokeWidth = strokeWidth
       ..style = PaintingStyle.stroke;
 
-    final pathSize = path.getBounds().size;
-    final scale = min(
-      size.width / pathSize.width,
-      size.height / pathSize.height,
-    );
-    final scaledPathSize = pathSize * scale;
+    final scale = fittingPathScale(path, size);
 
-    final offset = Offset(
+    final scaledPathSize = fittingPathSize(path, size);
+    // Offset required to align the dashed line accordingly to the alignment.
+    final alignmentOffset = Offset(
       (size.width - scaledPathSize.width) / 2 * (alignment.x + 1),
       (size.height - scaledPathSize.height) / 2 * (alignment.y + 1),
+    );
+
+    final pathBounds = path.getBounds();
+    // Offset needed to move the path into the painter bounds so
+    // that it doesn't overflow.
+    final negativeOffset = Offset(
+      -pathBounds.left * scale,
+      -pathBounds.top * scale,
     );
 
     final pathMetrics = path.computeMetrics();
@@ -50,7 +57,7 @@ class DashedLinePainter extends CustomPainter {
         final dashPath = pathMetric
             .extractPath(dist, dist + dashLength)
             .transform(_scaleMatrix4(scale))
-            .shift(offset);
+            .shift(alignmentOffset + negativeOffset);
 
         canvas.drawPath(dashPath, paint);
       }

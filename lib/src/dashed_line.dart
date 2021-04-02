@@ -1,3 +1,5 @@
+import 'package:dashed_line/src/fitting_path_size.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:svg_path_parser/svg_path_parser.dart';
 
@@ -71,17 +73,23 @@ class DashedLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: DashedLinePainter(
-        path: path,
-        color: color,
-        alignment: alignment,
-        dashLength: dashLength,
-        dashSpace: dashSpace,
-        strokeCap: dashCap,
-        strokeWidth: width,
-      ),
-      child: const SizedBox.expand(),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final size = fittingPathSize(path, constraints.biggest);
+
+        return CustomPaint(
+          painter: DashedLinePainter(
+            path: path,
+            color: color,
+            alignment: alignment,
+            dashLength: dashLength,
+            dashSpace: dashSpace,
+            strokeCap: dashCap,
+            strokeWidth: width,
+          ),
+          child: SizedBox.fromSize(size: size),
+        );
+      },
     );
   }
 }
