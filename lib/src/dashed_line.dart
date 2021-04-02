@@ -1,3 +1,4 @@
+import 'package:dashed_line/dashed_line.dart';
 import 'package:dashed_line/src/fitting_path_size.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -11,7 +12,7 @@ import 'dashed_line_painter.dart';
 /// 1. A [Path] if using a default constructor.
 /// 2. An SVG path definition when using the [DashedLine.svgPath] constructor.
 ///
-/// The line `alignment`, `dashLength`, `dashSpace`, `strokeCap`,
+/// The `lineFit`, `alignment`, `dashLength`, `dashSpace`, `strokeCap`,
 /// and `strokeWidth` are customizable.
 class DashedLine extends StatelessWidget {
   /// Creates a dashed line following a `path`.
@@ -19,6 +20,7 @@ class DashedLine extends StatelessWidget {
     Key? key,
     required this.path,
     required this.color,
+    this.lineFit = LineFit.contain,
     this.alignment = Alignment.center,
     this.dashLength = 4,
     this.dashSpace = 8,
@@ -37,6 +39,7 @@ class DashedLine extends StatelessWidget {
     String svgPath, {
     Key? key,
     required this.color,
+    this.lineFit = LineFit.contain,
     this.alignment = Alignment.center,
     this.dashLength = 4,
     this.dashSpace = 8,
@@ -52,6 +55,9 @@ class DashedLine extends StatelessWidget {
 
   /// The dashed line color.
   final Color color;
+
+  /// The [LineFit] of the line inside the parent.
+  final LineFit lineFit;
 
   /// The alignment of the dashed line relative to the parent.
   final Alignment alignment;
@@ -75,12 +81,13 @@ class DashedLine extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final size = fittingPathSize(path, constraints.biggest);
+        final size = fittingPathSize(path, constraints.biggest, lineFit);
 
         return CustomPaint(
           painter: DashedLinePainter(
             path: path,
             color: color,
+            lineFit: lineFit,
             alignment: alignment,
             dashLength: dashLength,
             dashSpace: dashSpace,

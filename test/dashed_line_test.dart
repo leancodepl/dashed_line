@@ -19,6 +19,11 @@ void main() {
       await testDashedLine(tester, line, 'path-default');
     });
 
+    testWidgets('Line fit = fill', (tester) async {
+      final line = DashedLine(path: path, color: black, lineFit: LineFit.fill);
+      await testDashedLine(tester, line, 'path-fill');
+    });
+
     testWidgets('All custom arguments', (tester) async {
       final line = DashedLine(
         path: path,
@@ -66,7 +71,13 @@ Future<void> testDashedLine(
 ) async {
   await tester.pumpWidget(Container(
     color: const Color(0xFFFFFFFF),
-    child: dashedLine,
+    alignment: Alignment.center,
+    child: Container(
+      width: 200,
+      height: 200,
+      decoration: BoxDecoration(border: Border.all()),
+      child: dashedLine,
+    ),
   ));
   await expectLater(
     find.byType(DashedLine),

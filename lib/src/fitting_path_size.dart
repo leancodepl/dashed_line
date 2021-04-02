@@ -1,18 +1,29 @@
 import 'dart:math' show min;
 import 'dart:ui';
 
-double fittingPathScale(Path path, Size containerSize) {
+import 'line_fit.dart';
+
+Offset fittingPathScale(Path path, Size containerSize, LineFit fit) {
   final pathSize = path.getBounds().size;
 
-  return min(
-    containerSize.width / pathSize.width,
-    containerSize.height / pathSize.height,
-  );
+  if (fit == LineFit.contain) {
+    final scale = min(
+      containerSize.width / pathSize.width,
+      containerSize.height / pathSize.height,
+    );
+
+    return Offset(scale, scale);
+  } else {
+    return Offset(
+      containerSize.width / pathSize.width,
+      containerSize.height / pathSize.height,
+    );
+  }
 }
 
-Size fittingPathSize(Path path, Size containerSize) {
+Size fittingPathSize(Path path, Size containerSize, LineFit fit) {
   final pathSize = path.getBounds().size;
-  final scale = fittingPathScale(path, containerSize);
+  final scale = fittingPathScale(path, containerSize, fit);
 
-  return pathSize * scale;
+  return Size(pathSize.width * scale.dx, pathSize.height * scale.dy);
 }
