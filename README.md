@@ -78,7 +78,7 @@ Due to how `Path`s work in Flutter and Skia, the `DashedLine` widget takes NOT a
 
 See [`LICENSE`][license].
 
-[underheader]: art/underheader.png
+[underheader]: https://raw.githubusercontent.com/leancodepl/dashed_line/main/art/underheader.png
 [pub-badge]: https://img.shields.io/pub/v/dashed_line
 [pub-link]: https://pub.dev/packages/dashed_line
 [build-badge]: https://img.shields.io/github/workflow/status/leancodepl/dashed_line/Test
@@ -92,13 +92,13 @@ See [`LICENSE`][license].
 [figma]: https://www.figma.com/
 [svgpatheditor]: https://yqnn.github.io/svg-path-editor/
 
-[figma-step1]: art/figma-step1.png
-[figma-step2]: art/figma-step2.png
+[figma-step1]: https://raw.githubusercontent.com/leancodepl/dashed_line/main/art/figma-step1.png
+[figma-step2]: https://raw.githubusercontent.com/leancodepl/dashed_line/main/art/figma-step2.png
 
 [control-points]: https://en.wikipedia.org/wiki/Control_point_(mathematics)
-[path-inside-bbox]: art/path-inside-bbox.png
-[path-inside-bbox-result]: art/path-inside-bbox-result.png
-[path-outside-bbox]: art/path-outside-bbox.png
-[path-outside-bbox-result]: art/path-outside-bbox-result.png
+[path-inside-bbox]: https://raw.githubusercontent.com/leancodepl/dashed_line/main/art/path-inside-bbox.png
+[path-inside-bbox-result]: https://raw.githubusercontent.com/leancodepl/dashed_line/main/art/path-inside-bbox-result.png
+[path-outside-bbox]: https://raw.githubusercontent.com/leancodepl/dashed_line/main/art/path-outside-bbox.png
+[path-outside-bbox-result]: https://raw.githubusercontent.com/leancodepl/dashed_line/main/art/path-outside-bbox-result.png
 
 [license]: LICENSE
