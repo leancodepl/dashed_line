@@ -53,7 +53,7 @@ class DashedLinePainter extends CustomPainter {
 
     final pathMetrics = path.computeMetrics();
     for (final pathMetric in pathMetrics) {
-      for (double dist = 0;
+      for (var dist = 0.0;
           dist < pathMetric.length;
           dist += dashLength + dashSpace) {
         final dashPath = pathMetric
@@ -79,6 +79,5 @@ class DashedLinePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(DashedLinePainter oldDottedLinePainter) =>
-      path != oldDottedLinePainter.path;
+  bool shouldRepaint(DashedLinePainter oldDelegate) => path != oldDelegate.path;
 }
