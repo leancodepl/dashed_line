@@ -18,12 +18,20 @@ class DashedLinePainter extends CustomPainter {
   });
 
   final Path path;
+
+  /// The color of the dashed line.
   final Color color;
+
   final LineFit lineFit;
   final Alignment alignment;
   final double dashLength;
   final double dashSpace;
+
+  /// The width of the edges, given in logical pixels measured in the direction
+  /// orthogonal to the direction of the path.
   final double strokeWidth;
+
+  /// The kind of finish to place on the end of line.
   final StrokeCap strokeCap;
 
   @override
