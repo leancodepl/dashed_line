@@ -3,10 +3,14 @@ import 'dart:ui';
 
 import 'line_fit.dart';
 
-Offset fittingPathScale(Path path, Size containerSize, LineFit fit) {
+/// Calculates the scale by which the [path] should be scaled to fit in a
+/// container of size [containerSize], taking [lineFit] into account.
+///
+/// The [Offset] returned should be interpreted as a scale in X and Y axes.
+Offset fittingPathScale(Path path, Size containerSize, LineFit lineFit) {
   final pathSize = path.getBounds().size;
 
-  if (fit == LineFit.contain) {
+  if (lineFit == LineFit.contain) {
     final scale = min(
       containerSize.width / pathSize.width,
       containerSize.height / pathSize.height,
@@ -21,9 +25,11 @@ Offset fittingPathScale(Path path, Size containerSize, LineFit fit) {
   }
 }
 
-Size fittingPathSize(Path path, Size containerSize, LineFit fit) {
+/// Calculates the size required to accomodate the [path] in a container of size
+/// [containerSize], taking [lineFit] into account.
+Size fittingPathSize(Path path, Size containerSize, LineFit lineFit) {
   final pathSize = path.getBounds().size;
-  final scale = fittingPathScale(path, containerSize, fit);
+  final scale = fittingPathScale(path, containerSize, lineFit);
 
   return Size(pathSize.width * scale.dx, pathSize.height * scale.dy);
 }

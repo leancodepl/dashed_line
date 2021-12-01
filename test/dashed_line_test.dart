@@ -69,16 +69,18 @@ Future<void> testDashedLine(
   DashedLine dashedLine,
   String goldenFile,
 ) async {
-  await tester.pumpWidget(Container(
-    color: const Color(0xFFFFFFFF),
-    alignment: Alignment.center,
-    child: Container(
-      width: 200,
-      height: 200,
-      decoration: BoxDecoration(border: Border.all()),
-      child: dashedLine,
+  await tester.pumpWidget(
+    Container(
+      color: const Color(0xFFFFFFFF),
+      alignment: Alignment.center,
+      child: Container(
+        width: 200,
+        height: 200,
+        decoration: BoxDecoration(border: Border.all()),
+        child: dashedLine,
+      ),
     ),
-  ));
+  );
   await expectLater(
     find.byType(DashedLine),
     matchesGoldenFile('goldens/$goldenFile.png'),
