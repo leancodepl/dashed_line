@@ -1,7 +1,7 @@
 import 'dart:math' show min;
 import 'dart:ui';
 
-import 'line_fit.dart';
+import 'package:dashed_line/src/line_fit.dart';
 
 Offset fittingPathScale(Path path, Size containerSize, LineFit fit) {
   final pathSize = path.getBounds().size;
