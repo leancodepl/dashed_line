@@ -9,6 +9,8 @@ jobs:
     name: Publish to pub.dev
 
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
 
     steps:
       - name: Checkout
@@ -17,14 +19,7 @@ jobs:
       - name: Setup Dart
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: 2.12.2
-
-      - name: Download pub.dev credentials
-        env:
-          CREDENTIALS: ${{ secrets.PUB_DEV_CREDENTIALS }}
-        run: |
-          mkdir -p ~/.pub-cache
-          echo $CREDENTIALS > ~/.pub-cache/credentials.json
+          sdk: 2.18.6
 
       - name: Publish
         run: dart pub publish -f
