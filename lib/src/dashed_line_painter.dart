@@ -6,6 +6,7 @@ import 'package:flutter/rendering.dart';
 
 /// A [CustomPainter] that can draw dashed lines.
 class DashedLinePainter extends CustomPainter {
+  /// Creates a new [DashedLinePainter].
   DashedLinePainter({
     required this.path,
     required this.color,
@@ -17,16 +18,22 @@ class DashedLinePainter extends CustomPainter {
     required this.strokeWidth,
   });
 
+  /// Path that
   final Path path;
 
   /// The color of the dashed line.
   final Color color;
 
+  /// How a line should be inscribed in a parent.
   final LineFit lineFit;
 
-  /// 
+  /// How the whole dashed line should be aligned in the parent.
   final Alignment alignment;
+
+  /// The length of a single dahs.
   final double dashLength;
+
+  /// The space between two neighboring dashes.
   final double dashSpace;
 
   /// The width of the edges, given in logical pixels measured in the direction
@@ -54,8 +61,8 @@ class DashedLinePainter extends CustomPainter {
     );
 
     final pathBounds = path.getBounds();
-    // Offset needed to move the path into the painter bounds so
-    // that it doesn't overflow.
+    // Offset needed to move the path into the painter bounds so that it doesn't
+    // overflow.
     final negativeOffset = Offset(
       -pathBounds.left * scale.dx,
       -pathBounds.top * scale.dy,
