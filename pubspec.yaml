@@ -1,6 +1,6 @@
 name: dashed_line
 description: Draw dashed lines with any shape and style you want. Just like that.
-version: 0.1.0+1
+version: 0.1.0+3
 repository: https://github.com/leancodepl/dashed_line
 
 environment:

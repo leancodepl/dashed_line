@@ -1,10 +1,9 @@
 import 'package:dashed_line/dashed_line.dart';
+import 'package:dashed_line/src/dashed_line_painter.dart';
 import 'package:dashed_line/src/fitting_path_size.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:svg_path_parser/svg_path_parser.dart';
-
-import 'dashed_line_painter.dart';
 
 /// A dashed line following a path.
 ///

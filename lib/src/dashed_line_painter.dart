@@ -1,9 +1,8 @@
 import 'dart:typed_data';
 
+import 'package:dashed_line/src/fitting_path_size.dart';
+import 'package:dashed_line/src/line_fit.dart';
 import 'package:flutter/rendering.dart';
-
-import 'fitting_path_size.dart';
-import 'line_fit.dart';
 
 class DashedLinePainter extends CustomPainter {
   DashedLinePainter({

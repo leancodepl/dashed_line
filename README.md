@@ -81,7 +81,7 @@ See [`LICENSE`][license].
 [underheader]: https://raw.githubusercontent.com/leancodepl/dashed_line/main/art/underheader.png
 [pub-badge]: https://img.shields.io/pub/v/dashed_line
 [pub-link]: https://pub.dev/packages/dashed_line
-[build-badge]: https://img.shields.io/github/workflow/status/leancodepl/dashed_line/Test
+[build-badge]: https://img.shields.io/github/actions/workflow/status/leancodepl/dashed_line/test.yml?branch=main
 [build-link]: https://github.com/leancodepl/dashed_line/actions/workflows/test.yml
 
 [path-methods]: https://api.flutter.dev/flutter/dart-ui/Path-class.html

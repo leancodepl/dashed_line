@@ -3,7 +3,7 @@ name: Test
 on:
   push:
     branches: [main]
-    ignore-tags: ['v*']
+    tags-ignore: ['v*']
   pull_request:
     branches: [main]
 
@@ -14,28 +14,18 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        flutter: ['2.5.0']
+        flutter: ['2.0.3', '3.7.3']
 
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Flutter
-        uses: subosito/flutter-action@v1
+        uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ matrix.flutter }}
-
-      - name: Flutter version
-        run: flutter --version
-
-      - name: Cache pub dependencies
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.FLUTTER_HOME }}/.pub-cache
-          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
-          restore-keys: ${{ runner.os }}-pub-
 
       - name: Install dependencies
         run: flutter pub get

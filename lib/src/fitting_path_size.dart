@@ -1,7 +1,7 @@
 import 'dart:math' show min;
 import 'dart:ui';
 
-import 'line_fit.dart';
+import 'package:dashed_line/src/line_fit.dart';
 
 /// Calculates the scale by which the [path] should be scaled to fit in a
 /// container of size [containerSize], taking [lineFit] into account.
