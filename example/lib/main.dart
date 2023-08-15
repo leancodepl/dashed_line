@@ -25,14 +25,14 @@ class HomeScreen extends StatelessWidget {
           Text(
             'Click me!',
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headline4,
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(72, 0, 72, 64),
               child: DashedLine(
                 path: path,
-                color: Theme.of(context).textTheme.headline4!.color!,
+                color: Theme.of(context).textTheme.headlineMedium!.color!,
               ),
             ),
           ),

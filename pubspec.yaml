@@ -4,8 +4,8 @@ version: 0.1.0+3
 repository: https://github.com/leancodepl/dashed_line
 
 environment:
-  sdk: '>=2.14.0 <3.0.0'
-  flutter: '>=2.5.0'
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.10.0'
 
 dependencies:
   flutter:
@@ -15,4 +15,4 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  leancode_lint: ^1.0.1+1
+  leancode_lint: ^5.0.0

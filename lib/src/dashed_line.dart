@@ -16,7 +16,7 @@ import 'package:svg_path_parser/svg_path_parser.dart';
 class DashedLine extends StatelessWidget {
   /// Creates a dashed line following a `path`.
   const DashedLine({
-    Key? key,
+    super.key,
     required this.path,
     required this.color,
     this.lineFit = LineFit.contain,
@@ -25,7 +25,7 @@ class DashedLine extends StatelessWidget {
     this.dashSpace = 8,
     this.dashCap = StrokeCap.butt,
     this.width = 1,
-  }) : super(key: key);
+  });
 
   /// Creates a dashed line following a path defined using SVG path commands.
   ///
@@ -36,7 +36,7 @@ class DashedLine extends StatelessWidget {
   /// - https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#path_commands
   DashedLine.svgPath(
     String svgPath, {
-    Key? key,
+    super.key,
     required this.color,
     this.lineFit = LineFit.contain,
     this.alignment = Alignment.center,
@@ -44,8 +44,7 @@ class DashedLine extends StatelessWidget {
     this.dashSpace = 8,
     this.dashCap = StrokeCap.butt,
     this.width = 1,
-  })  : path = parseSvgPath(svgPath),
-        super(key: key);
+  }) : path = parseSvgPath(svgPath);
 
   /// The path that the dashed line follows.
   ///

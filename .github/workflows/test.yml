@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        flutter: ['2.0.3', '3.7.3']
+        flutter: ['3.10.x']
 
     runs-on: ubuntu-latest
 
