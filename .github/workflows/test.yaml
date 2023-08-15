@@ -27,11 +27,17 @@ jobs:
         with:
           flutter-version: ${{ matrix.flutter }}
 
-      - name: Install dependencies
+      - name: flutter pub get
         run: flutter pub get
 
-      - name: Analyze
-        run: flutter analyze --fatal-infos
+      - name: flutter test
+        if: success() || failure()
+        run: flutter test --coverage
 
-      - name: Test
-        run: flutter test
+      - name: flutter analyze
+        if: success() || failure()
+        run: flutter analyze
+
+      - name: dart format
+        if: success() || failure()
+        run: dart format --set-exit-if-changed .

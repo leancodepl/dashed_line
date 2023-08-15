@@ -4,6 +4,7 @@ import 'package:dashed_line/src/fitting_path_size.dart';
 import 'package:dashed_line/src/line_fit.dart';
 import 'package:flutter/rendering.dart';
 
+/// A [CustomPainter] that can draw dashed lines.
 class DashedLinePainter extends CustomPainter {
   DashedLinePainter({
     required this.path,
@@ -22,6 +23,8 @@ class DashedLinePainter extends CustomPainter {
   final Color color;
 
   final LineFit lineFit;
+
+  /// 
   final Alignment alignment;
   final double dashLength;
   final double dashSpace;
