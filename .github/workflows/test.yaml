@@ -14,30 +14,30 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        flutter: ['3.10.x']
+        flutter: ['3.10.x', '3.13.x']
 
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Clone repository
+        uses: actions/checkout@v4
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ matrix.flutter }}
 
-      - name: flutter pub get
+      - name: Install dependencies
         run: flutter pub get
 
-      - name: flutter test
+      - name: Run tests
         if: success() || failure()
         run: flutter test --coverage
 
-      - name: flutter analyze
+      - name: Run analyzer
         if: success() || failure()
         run: flutter analyze
 
-      - name: dart format
+      - name: Run formatter
         if: success() || failure()
         run: dart format --set-exit-if-changed .
