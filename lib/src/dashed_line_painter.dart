@@ -30,7 +30,7 @@ class DashedLinePainter extends CustomPainter {
   /// How the whole dashed line should be aligned in the parent.
   final Alignment alignment;
 
-  /// The length of a single dahs.
+  /// The length of a single dash.
   final double dashLength;
 
   /// The space between two neighboring dashes.
