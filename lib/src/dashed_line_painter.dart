@@ -18,7 +18,7 @@ class DashedLinePainter extends CustomPainter {
     required this.strokeWidth,
   });
 
-  /// Path that
+  /// Path that will be drawn by this painter.
   final Path path;
 
   /// The color of the dashed line.
