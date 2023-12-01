@@ -4,7 +4,9 @@ import 'package:dashed_line/src/fitting_path_size.dart';
 import 'package:dashed_line/src/line_fit.dart';
 import 'package:flutter/rendering.dart';
 
+/// A [CustomPainter] that can draw dashed lines.
 class DashedLinePainter extends CustomPainter {
+  /// Creates a new [DashedLinePainter].
   DashedLinePainter({
     required this.path,
     required this.color,
@@ -16,13 +18,29 @@ class DashedLinePainter extends CustomPainter {
     required this.strokeWidth,
   });
 
+  /// Path that will be drawn by this painter.
   final Path path;
+
+  /// The color of the dashed line.
   final Color color;
+
+  /// How a line should be inscribed in a parent.
   final LineFit lineFit;
+
+  /// How the whole dashed line should be aligned in the parent.
   final Alignment alignment;
+
+  /// The length of a single dash.
   final double dashLength;
+
+  /// The space between two neighboring dashes.
   final double dashSpace;
+
+  /// The width of the edges, given in logical pixels measured in the direction
+  /// orthogonal to the direction of the path.
   final double strokeWidth;
+
+  /// The kind of finish to place on the end of line.
   final StrokeCap strokeCap;
 
   @override
@@ -43,8 +61,8 @@ class DashedLinePainter extends CustomPainter {
     );
 
     final pathBounds = path.getBounds();
-    // Offset needed to move the path into the painter bounds so
-    // that it doesn't overflow.
+    // Offset needed to move the path into the painter bounds so that it doesn't
+    // overflow.
     final negativeOffset = Offset(
       -pathBounds.left * scale.dx,
       -pathBounds.top * scale.dy,
@@ -52,7 +70,7 @@ class DashedLinePainter extends CustomPainter {
 
     final pathMetrics = path.computeMetrics();
     for (final pathMetric in pathMetrics) {
-      for (double dist = 0;
+      for (var dist = 0.0;
           dist < pathMetric.length;
           dist += dashLength + dashSpace) {
         final dashPath = pathMetric
@@ -78,6 +96,5 @@ class DashedLinePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(DashedLinePainter oldDottedLinePainter) =>
-      path != oldDottedLinePainter.path;
+  bool shouldRepaint(DashedLinePainter oldDelegate) => path != oldDelegate.path;
 }

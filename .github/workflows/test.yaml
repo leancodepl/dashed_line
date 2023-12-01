@@ -1,0 +1,43 @@
+name: Test
+
+on:
+  push:
+    branches: [main]
+    tags-ignore: ['v*']
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Flutter ${{ matrix.flutter }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        flutter: ['3.10.x', '3.13.x', '3.16.x']
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ matrix.flutter }}
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run tests
+        if: success() || failure()
+        run: flutter test --coverage
+
+      - name: Run analyzer
+        if: success() || failure()
+        run: flutter analyze
+
+      - name: Run formatter
+        if: success() || failure()
+        run: dart format --set-exit-if-changed .
